@@ -10,8 +10,9 @@ public class Persona extends Entity<PersonaId> {
     private DatosExtras datosExtras;
     private Email email;
 
-    public Persona(PersonaId entityId,DatosExtras datosExtras,Email email) {
+    public Persona(PersonaId entityId,Nombre nombre,DatosExtras datosExtras,Email email) {
         super(entityId);
+        this.nombre = nombre;
         this.datosExtras = datosExtras;
         this.email = email;
     }
