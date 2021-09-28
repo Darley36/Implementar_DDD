@@ -1,4 +1,7 @@
 package co.com.sofka.PetProject.personal;
 
-public class Personal {
+import co.com.sofka.PetProject.personal.values.PersonalId;
+import co.com.sofka.domain.generic.AggregateEvent;
+
+public class Personal extends AggregateEvent<PersonalId> {
 }

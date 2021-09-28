@@ -1,4 +1,6 @@
 package co.com.sofka.PetProject.personal.values;
 
-public class PersonalId {
+import co.com.sofka.domain.generic.Identity;
+
+public class PersonalId extends Identity {
 }

@@ -1,4 +1,7 @@
 package co.com.sofka.PetProject.venta;
 
-public class Venta {
+import co.com.sofka.PetProject.venta.values.VentaId;
+import co.com.sofka.domain.generic.AggregateEvent;
+
+public class Venta extends AggregateEvent<VentaId> {
 }

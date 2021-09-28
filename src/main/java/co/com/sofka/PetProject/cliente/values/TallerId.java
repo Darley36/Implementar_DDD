@@ -1,4 +1,6 @@
 package co.com.sofka.PetProject.cliente.values;
 
-public class TallerId {
+import co.com.sofka.domain.generic.Identity;
+
+public class TallerId extends Identity {
 }

@@ -1,4 +1,6 @@
 package co.com.sofka.PetProject.personal.values;
 
-public class CargoId {
+import co.com.sofka.domain.generic.Identity;
+
+public class CargoId extends Identity {
 }

@@ -1,4 +1,10 @@
 package co.com.sofka.PetProject.venta.values;
 
-public class Informacion {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Informacion implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }

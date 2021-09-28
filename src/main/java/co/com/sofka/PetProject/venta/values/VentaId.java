@@ -1,4 +1,6 @@
 package co.com.sofka.PetProject.venta.values;
 
-public class VentaId {
+import co.com.sofka.domain.generic.Identity;
+
+public class VentaId extends Identity {
 }
