@@ -24,11 +24,11 @@ public class Cargo extends Entity<CargoId> {
         this.funcion = Objects.requireNonNull(funcion);
     }
 
-    public Horario getHorario() {
+    public Horario horario() {
         return horario;
     }
 
-    public Funcion getFuncion() {
+    public Funcion funcion() {
         return funcion;
     }
 }

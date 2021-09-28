@@ -9,7 +9,7 @@ public class NombreVendedorCambiado extends DomainEvent {
     private final Nombre nombre;
 
     public NombreVendedorCambiado(VendedorId vendedorId, Nombre nombre) {
-        super("type");
+        super("nombrevendedorcambiado");
         this.vendedorId = vendedorId;
         this.nombre = nombre;
     }

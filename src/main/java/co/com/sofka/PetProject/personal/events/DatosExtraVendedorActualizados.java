@@ -9,7 +9,7 @@ public class DatosExtraVendedorActualizados extends DomainEvent {
     private final DatosExtras datosExtras;
 
     public DatosExtraVendedorActualizados(VendedorId vendedorId, DatosExtras datosExtras) {
-        super("type");
+        super("petproject.personal.datosextravendedoractualizado");
         this.vendedorId = vendedorId;
         this.datosExtras = datosExtras;
     }

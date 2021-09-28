@@ -9,7 +9,7 @@ public class HorarioCargoActualizado extends DomainEvent {
     private final Horario horario;
 
     public HorarioCargoActualizado(CargoId cargoId, Horario horario) {
-        super("type");
+        super("petproject.personal.horariocargoactualizado");
         this.cargoId = cargoId;
         this.horario = horario;
     }

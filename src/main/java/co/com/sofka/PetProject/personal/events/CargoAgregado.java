@@ -10,7 +10,7 @@ public class CargoAgregado extends DomainEvent {
     private final Horario horario;
     private final Funcion funcion;
     public CargoAgregado(CargoId cargoId, Horario horario, Funcion funcion) {
-        super("type");
+        super("petproject.personal.cargoagregado");
         this.cargoId = cargoId;
         this.horario = horario;
         this.funcion = funcion;

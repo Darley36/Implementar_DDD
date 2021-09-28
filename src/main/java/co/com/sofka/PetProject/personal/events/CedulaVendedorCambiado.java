@@ -9,7 +9,7 @@ public class CedulaVendedorCambiado extends DomainEvent {
     private final Cedula cedula;
 
     public CedulaVendedorCambiado(VendedorId vendedorId, Cedula cedula) {
-        super("type");
+        super("petproject.personal.cedulavendedorcambiado");
         this.vendedorId = vendedorId;
         this.cedula = cedula;
     }

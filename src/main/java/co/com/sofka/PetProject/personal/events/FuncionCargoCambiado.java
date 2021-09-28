@@ -9,7 +9,7 @@ public class FuncionCargoCambiado extends DomainEvent {
     private final Funcion funcion;
 
     public FuncionCargoCambiado(CargoId cargoId, Funcion funcion) {
-        super("type");
+        super("petproject.personal.funcioncargocambiado");
         this.cargoId = cargoId;
         this.funcion = funcion;
     }
