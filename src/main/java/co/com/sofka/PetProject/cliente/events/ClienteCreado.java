@@ -8,7 +8,7 @@ public class ClienteCreado extends DomainEvent {
     private final FrecuenciaSemana frecuenciaSemana;
 
     public ClienteCreado(FrecuenciaSemana frecuenciaSemana) {
-        super("sofka.cliente.clientecreado");
+        super("petproject.cliente.clientecreado");
         this.frecuenciaSemana = frecuenciaSemana;
     }
 

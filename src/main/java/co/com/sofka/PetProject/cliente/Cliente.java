@@ -1,6 +1,9 @@
 package co.com.sofka.PetProject.cliente;
 
 import co.com.sofka.PetProject.cliente.events.ClienteCreado;
+import co.com.sofka.PetProject.cliente.events.PersonaActualizada;
+import co.com.sofka.PetProject.cliente.events.PersonaCreada;
+import co.com.sofka.PetProject.cliente.events.TallerCreado;
 import co.com.sofka.PetProject.cliente.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 
@@ -16,6 +19,19 @@ public class Cliente extends AggregateEvent<ClienteId> {
         appendChange(new ClienteCreado(frecuenciaSemana)).apply();
     }
 
+    public void crearPersona(PersonaId personaId, Nombre nombre,DatosExtras datosExtras,Email email){
+        Objects.requireNonNull(personaId);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(datosExtras);
+        Objects.requireNonNull(email);
+        appendChange(new PersonaCreada(personaId,nombre,datosExtras,email)).apply();
+    }
+
+    public void actualizarPersona(Persona persona){
+        Objects.requireNonNull(persona);
+        appendChange(new PersonaActualizada(persona)).apply();
+    }
+
     public void crearTaller(TallerId entityId, Rut rut, Ubicacion ubicacion){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(rut);
@@ -23,11 +39,38 @@ public class Cliente extends AggregateEvent<ClienteId> {
         appendChange(new TallerCreado(entityId,rut,ubicacion)).apply();
     }
 
-    public void actualizarTaller(){
+    public void actualizarTaller(Taller taller){
+        Objects.requireNonNull(taller);
+        appendChange(new TallerActualizado(taller)).apply();
+    }
 
+    public void actualizarEmailPersona(PersonaId personaId, Email email){
+        Objects.requireNonNull(personaId);
+        Objects.requireNonNull(email);
+        appendChange(new EmailPersonaActualizado(personaId,email)).apply();
+    }
+
+    public void cambiarNombrePersona(PersonaId personaId, Nombre nombre){
+        Objects.requireNonNull(personaId);
+        Objects.requireNonNull(nombre);
+        appendChange(new NombrePersonaCambiado(personaId,nombre)).apply();
+    }
+
+    public void actualizarDatosExtrasPersona(PersonaId personaId, DatosExtras datosExtras){
+        Objects.requireNonNull(personaId);
+        Objects.requireNonNull(datosExtras);
+        appendChange(new DatosExtraPersonaActualizados(personaId,datosExtras)).apply();
     }
 
     public void cambiarRutTaller(TallerId entityId, Rut rut){
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(rut);
         appendChange(new RutTallerCambiado(entityId,rut)).apply();
+    }
+
+    public void actualizarUbicacionTaller(TallerId tallerId, Ubicacion ubicacion){
+        Objects.requireNonNull(tallerId);
+        Objects.requireNonNull(ubicacion);
+        appendChange(new UbicacionTallerActualizada(tallerId,ubicacion)).apply();
     }
 }
