@@ -1,9 +1,6 @@
 package co.com.sofka.PetProject.cliente;
 
-import co.com.sofka.PetProject.cliente.events.ClienteCreado;
-import co.com.sofka.PetProject.cliente.events.PersonaActualizada;
-import co.com.sofka.PetProject.cliente.events.PersonaCreada;
-import co.com.sofka.PetProject.cliente.events.TallerCreado;
+import co.com.sofka.PetProject.cliente.events.*;
 import co.com.sofka.PetProject.cliente.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 
