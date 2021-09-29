@@ -18,7 +18,7 @@ public class Cliente extends AggregateEvent<ClienteId> {
 
     private Cliente(ClienteId clienteId){
         super(clienteId);
-        subscribe(new PersonaChange(this));
+        subscribe(new ClienteChange(this));
     }
 
     public void crearPersona(PersonaId personaId, Nombre nombre,DatosExtras datosExtras,Email email){
@@ -29,9 +29,12 @@ public class Cliente extends AggregateEvent<ClienteId> {
         appendChange(new PersonaCreada(personaId,nombre,datosExtras,email)).apply();
     }
 
-    public void actualizarPersona(Persona persona){
-        Objects.requireNonNull(persona);
-        appendChange(new PersonaActualizada(persona)).apply();
+    public void actualizarPersona(PersonaId personaId, Nombre nombre,DatosExtras datosExtras,Email email){
+        Objects.requireNonNull(personaId);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(datosExtras);
+        Objects.requireNonNull(email);
+        appendChange(new PersonaActualizada(personaId,nombre,datosExtras,email)).apply();
     }
 
     public void crearTaller(TallerId entityId, Rut rut, Ubicacion ubicacion){
@@ -41,9 +44,11 @@ public class Cliente extends AggregateEvent<ClienteId> {
         appendChange(new TallerCreado(entityId,rut,ubicacion)).apply();
     }
 
-    public void actualizarTaller(Taller taller){
-        Objects.requireNonNull(taller);
-        appendChange(new TallerActualizado(taller)).apply();
+    public void actualizarTaller(TallerId entityId, Rut rut, Ubicacion ubicacion){
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(rut);
+        Objects.requireNonNull(ubicacion);
+        appendChange(new TallerActualizado(entityId,rut,ubicacion)).apply();
     }
 
     public void actualizarEmailPersona(PersonaId personaId, Email email){
