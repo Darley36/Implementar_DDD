@@ -5,7 +5,9 @@ import co.com.sofka.PetProject.personal.values.PersonalId;
 import co.com.sofka.PetProject.venta.events.*;
 import co.com.sofka.PetProject.venta.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -15,9 +17,21 @@ public class Venta extends AggregateEvent<VentaId> {
     protected ClienteId clienteId;
     protected PersonalId personalId;
 
-    public Venta(VentaId entityId) {
+    /*public Venta(VentaId entityId) {
         super(entityId);
         appendChange(new VentaCreada()).apply();
+    }*/
+
+    private Venta(VentaId ventaId) {
+        super(ventaId);
+        appendChange(new VentaCreada()).apply();
+        subscribe(new VentaChange(this));
+    }
+
+    public static Venta from(VentaId ventaId, List<DomainEvent> events){
+        var venta = new Venta(ventaId);
+        events.forEach(venta::applyEvent);
+        return venta;
     }
 
     public void calcularTotal(Integer cantidad, Precio precio, Producto producto){
@@ -71,7 +85,7 @@ public class Venta extends AggregateEvent<VentaId> {
         appendChange(new PersonalAsociado(personalId)).apply();
     }
 
-    public Optional<Producto> getProductoById(ProductoId productoId){
+    protected Optional<Producto> getProductoById(ProductoId productoId){
         return productos()
                 .stream().
                 filter(producto -> producto.identity().equals(productoId))
