@@ -1,5 +1,7 @@
 package co.com.sofka.PetProject.personal;
 
+import co.com.sofka.PetProject.cliente.ClienteChange;
+import co.com.sofka.PetProject.cliente.values.ClienteId;
 import co.com.sofka.PetProject.personal.events.*;
 import co.com.sofka.PetProject.personal.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
@@ -10,9 +12,15 @@ public class Personal extends AggregateEvent<PersonalId> {
     protected Cargo cargo;
     protected Vendedor vendedor;
 
-    public Personal(PersonalId entityId) {
+   /* public Personal(PersonalId entityId) {
         super(entityId);
         appendChange(new PersonalCreado()).apply();
+    }*/
+
+    private Personal(PersonalId entityId){
+        super(entityId);
+        appendChange(new PersonalCreado()).apply();
+        subscribe(new PersonalChange(this));
     }
 
     public void agregarVendedor(VendedorId entityId, Nombre nombre, DatosExtras datosExtras, Cedula cedula){
@@ -73,5 +81,13 @@ public class Personal extends AggregateEvent<PersonalId> {
         Objects.requireNonNull(vendedorId);
         Objects.requireNonNull(cedula);
         appendChange(new CedulaVendedorCambiado(vendedorId,cedula)).apply();
+    }
+
+    public Cargo cargo() {
+        return cargo;
+    }
+
+    public Vendedor vendedor() {
+        return vendedor;
     }
 }

@@ -80,4 +80,16 @@ public class Cliente extends AggregateEvent<ClienteId> {
         Objects.requireNonNull(ubicacion);
         appendChange(new UbicacionTallerActualizada(tallerId,ubicacion)).apply();
     }
+
+    public FrecuenciaSemana frecuenciaSemana() {
+        return frecuenciaSemana;
+    }
+
+    public Persona persona() {
+        return persona;
+    }
+
+    public Taller taller() {
+        return taller;
+    }
 }
